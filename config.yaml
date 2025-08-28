@@ -2,8 +2,7 @@
 
 # ──── 1) BROWSER / WEBDRIVER SETUP ─────────────────────────────────────────────
 browser: chrome              # "chrome" or "firefox"
-driver_path: "C:/Users/Filip/OneDrive/Desktop/cursor-pro/chromedriver.exe" 
-# Path to chromedriver/geckodriver binary, or omitted if on PATH
+driver_path: ~  # webdriver-manager will handle this automatically
 headless: false              # true => run browser in headless mode, false => show UI for debugging
 
 # ──── 2) SIGNUP / EMAIL SETTINGS ─────────────────────────────────────────────
@@ -21,7 +20,7 @@ static_email: ~           # e.g. "youown@mail.com"
 # ──── 3) CURSOR APP INSTALLATION PATH ──────────────────────────────────────────
 # In many cases, the script can auto‐detect "Cursor" install path (see code below).
 # But if you installed Cursor somewhere custom, set it here:
-cursor_path: "D:/Program Files/cursor/Cursor.exe"
+cursor_path: "C:\\Users\\costa\\AppData\\Local\\Programs\\cursor"
 # Examples you might fill in:
 # Windows:   "C:\\Program Files\\Cursor"
 # macOS:     "/Applications/Cursor.app/Contents/Resources/app"
@@ -44,4 +43,4 @@ email_poll_interval: 5        # in seconds: how often to refresh temp‐mail inb
 
 # ──── 7) EXTRAS / FLAGS ───────────────────────────────────────────────────────
 # If you only want to reset machine ID + version, skip signup logic by setting:
-skip_registration: false
+skip_registration: true

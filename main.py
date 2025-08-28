@@ -13,6 +13,8 @@ from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 # Local modules
 from machine_reset import reset_machine_identifiers
@@ -59,7 +61,7 @@ def get_webdriver(browser: str, driver_path: str, headless: bool):
             opts.add_experimental_option("excludeSwitches", ["enable-automation"])
             opts.add_experimental_option("useAutomationExtension", False)
 
-            service = ChromeService(driver_path) if driver_path else ChromeService()
+            service = ChromeService(ChromeDriverManager().install())
             driver = webdriver.Chrome(service=service, options=opts)
 
             driver.execute_cdp_cmd(
@@ -82,7 +84,7 @@ def get_webdriver(browser: str, driver_path: str, headless: bool):
             opts.set_preference("dom.webdriver.enabled", False)
             opts.set_preference("useAutomationExtension", False)
 
-            service = FirefoxService(driver_path) if driver_path else FirefoxService()
+            service = FirefoxService(GeckoDriverManager().install())
             driver = webdriver.Firefox(service=service, options=opts)
 
             driver.execute_script(
